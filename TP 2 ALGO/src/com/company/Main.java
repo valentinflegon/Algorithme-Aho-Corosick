@@ -11,6 +11,11 @@ public class Main {
         Node n2 = new Node();
         Path p0 = new Path(n0, n1,'a');
         Path p1 = new Path(n1, n2,'b');
+        
+        System.out.println( p1.getPrevious().getIndice());
+        System.out.println( p1.getValue());
+        System.out.println( p1.getNext().getIndice());
+
         String value;
         Scanner sc;
         do {
