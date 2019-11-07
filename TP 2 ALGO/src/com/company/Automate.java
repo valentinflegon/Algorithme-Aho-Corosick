@@ -10,6 +10,7 @@ public class Automate {
 
    public ArrayList<Node> arrayOfNode = new ArrayList<>();
    public ArrayList<String> arrayOfKeyword = new ArrayList<>();
+   public ArrayList<String> arrayOfValidWord = new ArrayList<>();
     public String text;
 
 
@@ -31,18 +32,37 @@ public class Automate {
 
     }
 
+/*
+methode de lecture de text mais qui a chaque fois q'un char n'est pas bon retourne a l'etat 0
+il faudra ameliorer ca 
 
     public void readText( String text){
-        //text.substring(0,1);
+        for(int i=0;i < text.length();i++){
+            if (text.charAt(i) == actualNodeTransition){
+               arrayOfValidWord.add(text.charAt(i));
+               if (actualNode.isFinal){
+                  afficher l'arrayOfValidWord
+                  if (actualNodeTransition != text.charAt(i+1)){
+                     aller sur Node etat 0
+                  }
+               }
+               i++;
+            }
+            else {
+               aller sur Node etat 0 
+               vider arrayOfValidKeyWord;
+               i++;
+            }
+         }
+    }
+*/
+     public void readText( String text){
         for(int i=0;i < text.length();i++){
             text.charAt(i);
 
             System.out.print(text.charAt(i));
         }
-
-
     }
-
 
 
     public void setArrayOfKeyword(String word) {
