@@ -5,26 +5,27 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
-        Node n0 = new Node();
-        Node n1 = new Node();
-        Node n2 = new Node();
-        Path p0 = new Path(n0, n1,'a');
-        Path p1 = new Path(n1, n2,'b');
-        
-        System.out.println( p1.getPrevious().getIndice());
-        System.out.println( p1.getValue());
-        System.out.println( p1.getNext().getIndice());
-
-        String value;
+        Automate automate = new Automate();
+        String value = "0",texte;
         Scanner sc;
+
+
+
+        System.out.println("Pour sortir rentrer * ");
         do {
-            System.out.println();
-            System.out.println();
-            System.out.print("ajouter valeur : ");
+            System.out.print("add keyword : ");
             sc = new Scanner(System.in);
             value = sc.nextLine();
-        }while (true);
+            if (!value.equals("*"))
+                automate.arrayOfKeyword.add(value);
+        } while (!value.equals("*"));
+        automate.printArrayOfKeyword();
+        System.out.print("Rentrer un texte : ");
+        sc = new Scanner(System.in);
+        automate.text = sc.nextLine();
+
+        automate.readText(automate.text);
+        // retourne les mots keyword present dans le texte
     }
 }
 
