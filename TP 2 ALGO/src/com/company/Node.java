@@ -14,6 +14,9 @@ public class Node {
         this.indice = indice;
     }
 
+    public int sizeArrayOfTransition(){
+        return arrayOfTransition.size();
+    }
     public void addTransition (Transition transition) {
         arrayOfTransition.add(transition);
     }
@@ -24,6 +27,15 @@ public class Node {
         }
         return null;
     }
+
+    public char getLetterOfTransition(int i) {
+        return arrayOfTransition.get(i).getLetter();
+    }
+
+    public Node getNodeOfTransition(int i) {
+        return arrayOfTransition.get(i).getNext();
+    }
+
 
     public ArrayList<Transition> getArrayOfTransition() {
         return arrayOfTransition;
@@ -57,3 +69,4 @@ public class Node {
     }
 
 }
+
