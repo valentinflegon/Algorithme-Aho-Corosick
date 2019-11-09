@@ -78,7 +78,7 @@ public class Automaton {
     }
     /*
 
-        public void readText( String text){
+        public void recherche( String text){
         
             char lettreCourante;
             Node noeudCourant = arrayOfNode().get(0);
