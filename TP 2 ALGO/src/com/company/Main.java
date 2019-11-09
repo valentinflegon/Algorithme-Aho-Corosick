@@ -24,9 +24,9 @@ public class Main {
             sc = new Scanner(System.in);
             value = sc.nextLine();
             if (!value.equals("*"))
-                automate.arrayOfKeyword.add(value);
+                automate.addWord(value);
         } while (!value.equals("*"));
-        automate.printArrayOfKeyword();
+        automate.display();
         System.out.print("Rentrer un texte : ");
         sc = new Scanner(System.in);
         automate.text = sc.nextLine();
