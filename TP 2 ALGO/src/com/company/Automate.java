@@ -92,8 +92,9 @@ public class Automaton {
                       //afficher l'arrayOfValidWord
                       for (int j=0; j<arrayOfValideWord.size();j++)
                       {
-                           System.out.println(arrayOfValidWord.get(j));
+                           System.out.print(arrayOfValidWord.get(j));
                        }
+                       System.out.println("");
                       if (noeudCourant.transition != text.charAt(i+1)){
                          aller sur Node etat 0
                       }
