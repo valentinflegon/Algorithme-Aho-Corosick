@@ -3,27 +3,34 @@ package com.company;
 import java.util.ArrayList;
 
 public class Node {
-    private ArrayList<Path> pathArrayList = new ArrayList<>();
+    private ArrayList<Transition> arrayOfTransition = new ArrayList<>();
     private boolean isFinal;
     private int indice;
 
 
     public Node(boolean isFinal, int indice) {
-        this.pathArrayList = new ArrayList<>();
+        this.arrayOfTransition = new ArrayList<>();
         this.isFinal = isFinal;
-
+        this.indice = indice;
     }
 
-    public void addPath(Path path){
-        pathArrayList.add(path);
+    public void addTransition (Transition transition) {
+        arrayOfTransition.add(transition);
     }
 
-    public ArrayList<Path> getPathArrayList() {
-        return pathArrayList;
+    public Transition getTransition(char letter){
+        for (Transition transition : arrayOfTransition) {
+            if (letter == transition.getLetter()) return transition;
+        }
+        return null;
     }
 
-    public void setPathArrayList(ArrayList<Path> pathArrayList) {
-        this.pathArrayList = pathArrayList;
+    public ArrayList<Transition> getArrayOfTransition() {
+        return arrayOfTransition;
+    }
+
+    public void setArrayOfTransition(ArrayList<Transition> arrayOfTransition) {
+        this.arrayOfTransition = arrayOfTransition;
     }
 
     public boolean isFinal() {
@@ -43,5 +50,10 @@ public class Node {
         this.indice = indice;
     }
 
+    public void display(){
+        System.out.print("Node n°" + getIndice() + " | ");
+        if (isFinal)System.out.println("Final");
+        else System.out.println("NonFinal");
+    }
 
 }
