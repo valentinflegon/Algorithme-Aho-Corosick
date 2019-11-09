@@ -5,7 +5,14 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Automate automate = new Automate();
+        Automaton automate = new Automaton();
+        automate.addWord("teamjul");
+        automate.addWord("karris");
+        automate.addWord("teamjoel");
+        automate.display();
+        /*
+
+
         String value = "0",texte;
         Scanner sc;
 
@@ -24,8 +31,7 @@ public class Main {
         sc = new Scanner(System.in);
         automate.text = sc.nextLine();
 
-        automate.readText(automate.text);
+        automate.readText(automate.text);*/
         // retourne les mots keyword present dans le texte
     }
 }
-
