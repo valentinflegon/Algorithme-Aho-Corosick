@@ -77,23 +77,35 @@ public class Automaton {
         }
     }
     /*
-    methode de lecture de text mais qui a chaque fois q'un char n'est pas bon retourne a l'etat 0
-    il faudra ameliorer ca
+
         public void readText( String text){
+        
+            char lettreCourante;
+            Node noeudCourant = arrayOfNode().get(0);
             for(int i=0;i < text.length();i++){
-                if (text.charAt(i) == actualNodeTransition){
-                   arrayOfValidWord.add(text.charAt(i));
-                   if (actualNode.isFinal){
-                      afficher l'arrayOfValidWord
-                      if (actualNodeTransition != text.charAt(i+1)){
+                
+                lettreCourante = text.charAt(i);
+                
+                if (lettreCourante == noeudCourant.transition ){
+                   arrayOfValidWord.add(lettreCourante);
+                   if (noeudCourant.isFinal){
+                      //afficher l'arrayOfValidWord
+                      for (int j=0; j<arrayOfValideWord.size();j++)
+                      {
+                           System.out.println(arrayOfValidWord.get(j));
+                       }
+                      if (noeudCourant.transition != text.charAt(i+1)){
                          aller sur Node etat 0
                       }
                    }
+                   // on va sur la transition
+                   noeudCourant = noeudCourant.transition.nextNode;
                    i++;
                 }
                 else {
-                   aller sur Node etat 0
-                   vider arrayOfValidKeyWord;
+                   noeudCourant = arrayOfNode().get(0);
+                   //vider arrayOfValidKeyWord
+                   arrayOfValidKeyWord.clear();
                    i++;
                 }
              }
