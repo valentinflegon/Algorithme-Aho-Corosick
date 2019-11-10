@@ -76,17 +76,27 @@ public class Automaton {
         }
     }
     
-    
+    public String readText() throws IOException {
+    BufferedReader in = new BufferedReader(new FileReader("c:/text.txt"));
+    String line;
+    while ((line = in.readLine()) != null)
+    {
+        return line;
+        // Afficher le contenu du fichier
+      //  System.out.println (line);
+    }
+    in.close();
+    return line;
+}
+
     public int findIndexOfTransition(char l,Node noeudCourant) {
         int p = 0;
         for (int k = 0; k < noeudCourant.sizeArrayOfTransition(); k++) {
             if (l != noeudCourant.getLetterOfTransition(k)) {
-                //System.out.println("transition  : "+ noeudCourant.getLetterOfTransition(p));
                 //System.out.println(p);
                 p++;
             }
             else{
-                //System.out.println("transition trouvé : "+ noeudCourant.getLetterOfTransition(p));
                 //System.out.println(p);
                 return p;
             }
@@ -114,26 +124,26 @@ public class Automaton {
              }
              else { //transition trouvé
                  //System.out.println("transion de la lettre courante : "+ noeudCourant.getLetterOfTransition(k));
-               //  if (lettreCourante == noeudCourant.getLetterOfTransition(k)) { // si lettreCourante egale a une transition
                      arrayOfValidWord.add(lettreCourante);
                      noeudCourant = noeudCourant.getNodeOfTransition(k);
                      if (noeudCourant.isFinal()) {
                          System.out.print("mot valide : ");
                          for (int j = 0; j < arrayOfValidWord.size(); j++) { //afficher l'arrayOfValidWord
                              System.out.print(arrayOfValidWord.get(j));
+
                          }
-                        // noeudCourant = initialNode;
-                         // he hi hehi ne marche pas 
-                         // he hi hekhi marche 
-                         //
-                         // if (noeudCourant.transition != text.charAt(i + 1)) {
-                         // aller sur Node etat 0
+                         /*if(findIndexOfTransition(lettreCourante,noeudCourant)==-1){
+                             noeudCourant = initialNode;
+                             System.out.println("ici");
+                         }*/
                          System.out.println("");
-                 //    }
+                         int firstIndex =  i-arrayOfValidWord.size();
+                         System.out.println("POSITION :" + firstIndex + " to " + i  );
                  }
              }
         }
     }
+
 
     public ArrayList<Node> getArrayOfNode() {
         return arrayOfNode;
