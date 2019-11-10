@@ -80,31 +80,38 @@ public class Automaton {
         char lettreCourante;
         Node noeudCourant = arrayOfNode.get(0);
         for(int i=0;i < text.length(); i++){
+           // System.out.println("i : "+i);
             lettreCourante = text.charAt(i);
+            System.out.println(" lettre courante : "+lettreCourante);
             for(int k = 0; k < noeudCourant.sizeArrayOfTransition();k++) { //parcourt des transitions
+               // System.out.println("k : "+k);
+                System.out.println("transion de la lettre courante : "+ noeudCourant.getLetterOfTransition(k));
                 if (lettreCourante == noeudCourant.getLetterOfTransition(k)) { // si lettreCourante egale a une transition
+                    //System.out.println(" lettre courante == transition");
                     arrayOfValidWord.add(lettreCourante);
+                    noeudCourant = noeudCourant.getNodeOfTransition(k);
                     if (noeudCourant.isFinal()) {
+                        System.out.println("mot valide : ");
                         for (int j = 0; j < arrayOfValidWord.size(); j++) { //afficher l'arrayOfValidWord
                             System.out.print(arrayOfValidWord.get(j));
                         }
+
                         System.out.println("");
 
                         // if (noeudCourant.transition != text.charAt(i + 1)) {
                            // aller sur Node etat 0
                     }
                     // on va sur la transition
-                    noeudCourant = noeudCourant.getNodeOfTransition(k);
-                    i++;
-                } else {
+                }
+                else {
                     noeudCourant = initialNode;
                     //vider arrayOfValidKeyWord
                     arrayOfValidWord.clear();
-                    i++;
                 }
             }
         }
     }
+
 
 /*
     public void readText( String text){
