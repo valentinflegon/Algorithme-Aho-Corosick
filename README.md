@@ -14,7 +14,7 @@ De nombreuses méthodes sont implémentées mais elles sont plutot classique ce 
 * La classe Transition représente les arcs de transitions entre chaque noeud et ont pour attribut une lettre (lettre sur laquel la transition est faite) et un Node next qui représente le noeud vers lequel va cette transition.
 
 ## Phase de pretraitement création des nodes etc 
-* Creation de l'automate 
+* La classe "Automaton" possède une fonction nommée "addWord" qui prend en entrée une String qui est composé du mot a integrer dans la structure. cette fonction est composé d'un noeud courrant et d'une lettre courrante.tout d'abord le programme recherche l'existance d'un transition composé de la lettre courante a partir du noeud courrant. si lorsqu'une transition est existante alors nous ne creont pas de noeud et attribuons le prochain noeud au noeud courrant. sinon nous créont la transition composé de la lettre courrant et créont un nouveau noeud qui sera attrubuer au noeud courrant.
 
 ## Lecture du fichier a analyser 
 
