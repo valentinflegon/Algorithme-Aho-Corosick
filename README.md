@@ -15,7 +15,8 @@ L'algorithme d'Aho-Corasick est un algorithme de recherche de chaîne de caract�
 ## Identifications des mots clés
 
 ## Affichage d’une interface conviviale
-La classe "validPos" permet de sauvegarder la ligne et les positions de depart de fin des mots valides.
+
+* La classe "validPos" permet de sauvegarder la ligne et les positions de depart de fin des mots valides.
 
 Le FXML "MainPane" nous permet l'affichage graphique du programme.
 Le FXML est controlé par la classe "MainPane"
@@ -25,10 +26,10 @@ il est composé :
 	- D'une liste de mots recherché
 	- D'une liste de ligne du ficher texte
 
-La classe "MainPane" permet le controle du FXML. Lorsque l'utilisateur appuie sur le bouton "search" le programme effectura l'ajout du mot entrée par l'utilsateur dans un liste de mots recherché. 
+* La classe "MainPane" permet le controle du FXML. Lorsque l'utilisateur appuie sur le bouton "search" le programme effectura l'ajout du mot entrée par l'utilsateur dans un liste de mots recherché. 
 Si le mots est deja present dans cette liste alors le programme effectura sa suppresion. la classe effectura egalement la lecture et l'affichage du texte dont les mots valides sont encapsulé.
 
-* Java 8 nécessaire pour faire fonctionner le JavaFx
+** Java 8 nécessaire pour faire fonctionner le JavaFx
 
 
 11/11/2019
