@@ -24,31 +24,33 @@ public class MainPane {
     public void searchButtonClicked() {
         Automaton automaton = new Automaton();
 
-        try {
-            text=automaton.readText();
+        try {//test si lecture possible
+            text=automaton.readFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         ObservableList<String> items = FXCollections.observableArrayList(listOfWord.getItems());
-        if (listOfWord.getItems().contains(word.getText())) items.remove(word.getText());
-        else items.add(word.getText());
+        if (listOfWord.getItems().contains(word.getText())) items.remove(word.getText());//si mot recherché est existant alors suppresion du mot dans la list de mots recherché
+        else items.add(word.getText());//ajout d'un nouveau mot recherché
         listOfWord.setItems(items);
 
-        for (String word: listOfWord.getItems()) {
-            automaton.addWord(word);
+        for (String word : listOfWord.getItems()) {//parcours des mots recherché
+            automaton.addWord(word);//ajout a la structure de recherche
         }
-        automaton.search(automaton.arrayText);
-            ObservableList<String> itemsOfLines = FXCollections.observableArrayList();
-            int i = 0;
-            for (String line : text) {
-                for (validPos validPos:automaton.getArrayOfValidPos()) {
-                   if (validPos.getLine() == i) line = (line.substring(0,validPos.getBefore())+'['+ line.substring(validPos.getBefore(),validPos.getAfter())+']' + line.substring(validPos.getAfter(),line.length()));
-                }
-                itemsOfLines.add(line);
-                i++;
+        automaton.search(automaton.arrayText);//recherche des mots recherché
+
+        ObservableList<String> itemsOfLines = FXCollections.observableArrayList();
+        int i = 0;
+        for (String line : text) {//parcours des lignes
+            for (validPos validPos:automaton.getArrayOfValidPos()) {//parcours des positions valides
+                if (validPos.getLine() == i) line = (line.substring(0,validPos.getBefore())+'['+ line.substring(validPos.getBefore(),validPos.getAfter())+']' + line.substring(validPos.getAfter(),line.length()));
+                //encapsulage des mots valides
             }
-            listOfLine.setItems(itemsOfLines);
+            itemsOfLines.add(line);
+            i++;
+        }
+        listOfLine.setItems(itemsOfLines);//ajout des lignes a l'affichage
     }
 
 }
