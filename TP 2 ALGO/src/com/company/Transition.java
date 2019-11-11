@@ -1,4 +1,4 @@
-package com.company;
+package company;
 
 public class Transition {
     private Node next;
@@ -14,16 +14,8 @@ public class Transition {
         return next;
     }
 
-    public void setNext(Node next) {
-        this.next = next;
-    }
-
     public char getLetter() {
         return letter;
-    }
-
-    public void setLetter(char letter) {
-        this.letter = letter;
     }
 
     public void display(){
