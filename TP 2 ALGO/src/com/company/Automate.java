@@ -10,6 +10,7 @@ public class Automaton {
     private ArrayList<Node> arrayOfNode;
     public ArrayList<String> arrayOfKeyword = new ArrayList<>();
     public ArrayList<Character> arrayOfValidWord = new ArrayList<>();
+    public ArrayList<String> arrayText = new ArrayList<>();
     public String text;
     private Node initialNode;
 
