@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane fx:controller="company.MainPane"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <VBox GridPane.columnIndex="0">
+        <ToolBar prefHeight="40.0" prefWidth="1000">
+            <items>
+                <TextField id="word" fx:id="word" prefWidth="850.0" />
+                <Region prefWidth="20.0" />
+                <Button fx:id="searchButton" onAction="#searchButtonClicked" mnemonicParsing="false" prefWidth="110.0" text="Search" />
+            </items>
+        </ToolBar>
+        <HBox GridPane.columnIndex="1" prefHeight="660">
+            <ListView fx:id="listOfWord" prefWidth="100"/>
+            <ListView fx:id="listOfLine" prefWidth="900"/>
+        </HBox>
+    </VBox>
+</GridPane>
