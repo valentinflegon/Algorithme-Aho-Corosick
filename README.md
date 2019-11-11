@@ -1,4 +1,6 @@
 # Algorithme Aho-Corosick Java
+### Devoir n°2 
+### Reconnaissance de mots-clés  
 
 ## Description du projet 
 L'algorithme d'Aho-Corasick est un algorithme de recherche de chaîne de caractères (ou motif) dans un texte dû à Alfred Aho et Margaret Corasick et publié en 1975. L'algorithme consiste à avancer dans une structure de données abstraite appelée dictionnaire qui contient le ou les mots recherchés en lisant les lettres du texte une par une.
@@ -6,7 +8,10 @@ L'algorithme d'Aho-Corasick est un algorithme de recherche de chaîne de caract�
 
 
 ## Explication de la structure de données Nodes / Path 
+* La classe Node permet de représenter les Etats de l'automate, chaque noeud a pour attribut une liste de transition de type Transition qui permet de faire le lien entre chaque noeud. On peut également savoir si ses noeuds sont finaux ou non et d'un indice. 
+De nombreuses méthodes sont implémentées mais elles sont plutot classique ce sont uniquement des getter & setter afin de récuperer les atttributs.
 
+* La classe Transition représente les arcs de transitions entre chaque noeud et ont pour attribut une lettre (lettre sur laquel la transition est faite) et un Node next qui représente le noeud vers lequel va cette transition.
 
 ## Phase de pretraitement création des nodes etc 
 * Creation de l'automate 
