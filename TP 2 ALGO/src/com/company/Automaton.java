@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Classe Automaton
+ */
 public class Automaton {
     private ArrayList<Node> arrayOfNode;
     public ArrayList<Character> arrayOfValidWord = new ArrayList<>();
@@ -53,57 +56,89 @@ public class Automaton {
             System.out.println();
         }
     }
-
+    
+    /**
+     * Fonction qui va lire et retourner le texte stocké dans arrayText
+     * via un BufferReader
+     */
     public ArrayList<String> readFile() throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("c:/text.txt"));
         String line;
-        int i=0;
         while ((line = in.readLine()) != null){
             arrayText.add(line);
         }
         in.close();
         return arrayText;
     }
-
-    public int findIndexOfTransition(char letter, Node currentNode) {
-        int p = 0;
-        for (int k = 0; k < currentNode.sizeArrayOfTransition(); k++) {
-            if (letter != currentNode.getLetterOfTransition(k)) {
-                p++;
+    
+    /**
+     * Fonction qui va parcourir toutes les transitions du noeudCourant
+     * et les comparer avec letter
+     *
+     * @param letter
+     * @param noeudCourant
+     *
+     * @return -1 si la transition n'est pas trouvé
+     * ou retourne  "compteur" l'indexe dans la liste
+     * des transitions si elle existe
+     */
+    public int findIndexOfTransition(char letter,Node currentNode) {
+        int compteur = 0;
+        for (int indexPosition = 0; indexPosition < currentNode.sizeArrayOfTransition(); indexPosition++) {
+            if (letter != currentNode.getLetterOfTransition(indexPosition)) {
+                compteur++;
             }
             else{
-                return p;
+                return compteur;
             }
         }
-        if (p == currentNode.sizeArrayOfTransition()) {
+        if (compteur == currentNode.sizeArrayOfTransition()) {
             return -1;
         }
         return -1;
     }
-
+    
+    /**
+     * Fonction de recherche qui prend en entrée un liste contenant les lignes
+     * du texte. On va parcourir chaque ligne et lui appliquer le programme expliqué
+     * ci-dessous.
+     * Nous allons stocker la lettre courante et lui faire se deplacer jusqu'a la fin de
+     * la ligne, un appel a la methode vu juste avant findIndexOfTransition
+     * va nous permettre de savoir si il existe une transition correspondant a la
+     * lettreCourante ou non.
+     * Si elle n'existe pas (return -1) alors le noeud courant retourne à l'etat 0
+     * et nous supprimons la liste des mots valides.
+     * En revanche si il existe une transition alors nous allons la stocker
+     * dans la liste des mots valides et faire se deplacer le noeud courant a la
+     * position du nouveau noeud, celui qui suit la transition.
+     * Si ce noeud est final alors nous l'affichons et recuperons sont indexe de position
+     * ainsi que sa ligne
+     *
+     * @param arrayText
+     */
     public void search(ArrayList<String> arrayText){
-        for (int z=0;z<arrayText.size();z++){
-            char currentLetter;
-            Node currentNode = initialNode;
-            for(int i=0;i < arrayText.get(z).length(); i++) {
-                currentLetter = arrayText.get(z).charAt(i);
-                int k = findIndexOfTransition(currentLetter, currentNode);// retourne la position dans l'arraylist de la transition si il y en a pas retourne -1
-                if (k == -1){ //pas de transition
-                    currentNode = initialNode;
-                    arrayOfValidWord.clear();//vider arrayOfValidKeyWord
+        for (int indexOfLine=0;indexOfLine<arrayText.size();indexOfLine++){
+            char letterCourante;
+            Node noeudCourant = initialNode;
+            for(int indexOfPositionLine=0;indexOfPositionLine < arrayText.get(indexOfLine).length(); indexOfPositionLine++) {
+                letterCourante = arrayText.get(indexOfLine).charAt(indexOfPositionLine);
+                int indexOfTransition = findIndexOfTransition(letterCourante, noeudCourant);
+                if (indexOfTransition == -1){
+                    noeudCourant = initialNode;
+                    arrayOfValidWord.clear();
                 }
-                else { //transition trouvé
-                    arrayOfValidWord.add(currentLetter);
-                    currentNode = currentNode.getNodeOfTransition(k);
-                    if (currentNode.isFinal()) {
+                else {
+                    arrayOfValidWord.add(letterCourante);
+                    noeudCourant = noeudCourant.getNodeOfTransition(indexOfTransition);
+                    if (noeudCourant.isFinal()) {
                         System.out.print("mot valide : ");
-                        for (int j = 0; j < arrayOfValidWord.size(); j++) { //afficher l'arrayOfValidWord
+                        for (int j = 0; j < arrayOfValidWord.size(); j++) {
                             System.out.print(arrayOfValidWord.get(j));
                         }
                         System.out.println("");
-                        int firstIndex =  i-arrayOfValidWord.size();
-                        System.out.println("LIGNE : " +z);
-                        System.out.println("POSITION :" + firstIndex + " to " + i  );
+                        int firstIndex =  indexOfPositionLine-arrayOfValidWord.size();
+                        System.out.println("LIGNE : " +indexOfLine);
+                        System.out.println("POSITION :" + firstIndex + " to " + indexOfPositionLine  );
                         arrayOfValidPos.add(new validPos(z, firstIndex+1, i+1));
                     }
                 }
