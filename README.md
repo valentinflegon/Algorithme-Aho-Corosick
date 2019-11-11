@@ -1,4 +1,5 @@
-# tp-Aho-Corosick-
+# Algorithme Aho-Corosick Java
+
 
 blabla sur Aho Corasick 
 
