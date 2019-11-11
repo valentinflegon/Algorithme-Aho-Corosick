@@ -9,10 +9,16 @@ L'algorithme d'Aho-Corasick est un algorithme de recherche de chaîne de caract�
 
 
 ## Phase de pretraitement création des nodes etc 
+* Creation de l'automate 
 
 ## Lecture du fichier a analyser 
 
+* Pour la lecture du texte nous utilisons simplement un BufferRead et une arrayList, 
+chaque ligne sera lu et ajouté à la liste, tant que cela n'est pas null.
+Et retourne cette liste rempli avec le texte.
+
 ## Identifications des mots clés
+
 * findIndexOfTransition cette fonction va parcourir toutes les transitions du noeud courant et les comparer avec la lettre courante. Retourne -1 si la transition n'est pas trouvé ou retourne  "compteur" l'indexe dans la liste des transitions si elle existe.
      
 
