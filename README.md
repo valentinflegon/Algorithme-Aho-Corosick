@@ -1,15 +1,15 @@
 # Algorithme Aho-Corosick Java
 
 
-blabla sur Aho Corasick 
+##blabla sur Aho Corasick 
 
-Explication de la structure de données Nodes / Path 
+##Explication de la structure de données Nodes / Path 
 et Algo detail
 
-Phase de pretraitement création des nodes etc 
+##Phase de pretraitement création des nodes etc 
 
-Lecture du fichier a analyser 
+##Lecture du fichier a analyser 
 
-Identifications des mots clés
+##Identifications des mots clés
 
-Affichage d’une interface conviviale
+##Affichage d’une interface conviviale
