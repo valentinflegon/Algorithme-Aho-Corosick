@@ -1,0 +1,54 @@
+package company;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class MainPane {
+    ArrayList<String> text;
+    @FXML
+    Button searchButton;
+    @FXML
+    ListView<String> listOfWord = new ListView<String>();
+    @FXML
+    ListView<String> listOfLine;
+    @FXML
+    TextField word;
+
+    public void searchButtonClicked() {
+        Automaton automaton = new Automaton();
+
+        try {
+            text=automaton.readText();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ObservableList<String> items = FXCollections.observableArrayList(listOfWord.getItems());
+        if (listOfWord.getItems().contains(word.getText())) items.remove(word.getText());
+        else items.add(word.getText());
+        listOfWord.setItems(items);
+
+        for (String word: listOfWord.getItems()) {
+            automaton.addWord(word);
+        }
+        automaton.search(automaton.arrayText);
+            ObservableList<String> itemsOfLines = FXCollections.observableArrayList();
+            int i = 0;
+            for (String line : text) {
+                for (validPos validPos:automaton.getArrayOfValidPos()) {
+                   if (validPos.getLine() == i) line = (line.substring(0,validPos.getBefore())+'['+ line.substring(validPos.getBefore(),validPos.getAfter())+']' + line.substring(validPos.getAfter(),line.length()));
+                }
+                itemsOfLines.add(line);
+                i++;
+            }
+            listOfLine.setItems(itemsOfLines);
+    }
+
+}
