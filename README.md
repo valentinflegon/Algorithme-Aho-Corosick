@@ -13,6 +13,14 @@ L'algorithme d'Aho-Corasick est un algorithme de recherche de chaîne de caract�
 ## Lecture du fichier a analyser 
 
 ## Identifications des mots clés
+* findIndexOfTransition cette fonction va parcourir toutes les transitions du noeud courant et les comparer avec la lettre courante. Retourne -1 si la transition n'est pas trouvé ou retourne  "compteur" l'indexe dans la liste des transitions si elle existe.
+     
+
+*  La méthode search cette fonction de recherche prend en entrée un liste contenant les lignes du texte. On va parcourir chaque ligne et lui appliquer le programme expliqué ci-dessous.
+Nous allons stocker la lettre courante et lui faire se deplacer jusqu'a la fin de
+la ligne, un appel à la methode vu juste avant findIndexOfTransition va nous permettre de savoir si il existe une transition correspondant à la lettre courante ou non.
+Si elle n'existe pas (return -1) alors le noeud courant retourne à l'etat 0 et nous supprimons la liste des mots valides.
+En revanche si il existe une transition alors nous allons la stocker dans la liste des mots valides et faire se deplacer le noeud courant à la position du nouveau noeud, celui qui suit la transition. Si ce noeud est final alors nous l'affichons et recuperons sont indexe de position ainsi que sa ligne.
 
 ## Affichage d’une interface conviviale
 
@@ -29,7 +37,7 @@ il est composé :
 * La classe "MainPane" permet le controle du FXML. Lorsque l'utilisateur appuie sur le bouton "search" le programme effectura l'ajout du mot entrée par l'utilsateur dans un liste de mots recherché. 
 Si le mots est deja present dans cette liste alors le programme effectura sa suppresion. la classe effectura egalement la lecture et l'affichage du texte dont les mots valides sont encapsulé.
 
-** Java 8 nécessaire pour faire fonctionner le JavaFx
+*** Java 8 nécessaire pour faire fonctionner le JavaFx ***
 
 
 11/11/2019
