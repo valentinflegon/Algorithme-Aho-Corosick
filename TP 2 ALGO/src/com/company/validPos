@@ -1,0 +1,23 @@
+package company;
+
+public class validPos {
+    private int line, before, after;
+
+    public validPos(int line, int before, int after) {
+        this.before = before;
+        this.after = after;
+        this.line = line;
+    }
+
+    public int getBefore() {
+        return before;
+    }
+
+    public int getLine() {
+        return line;
+    }
+
+    public int getAfter() {
+        return after;
+    }
+}
