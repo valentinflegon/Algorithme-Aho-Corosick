@@ -1,21 +1,26 @@
-package com.company;
+package company;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Scanner;
-public class Main {
+
+public class Main extends Application{
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("MainPane.fxml"));
+        primaryStage.setTitle("Cyrano de Bergerac");
+        primaryStage.setScene(new Scene(root, 1000, 700));
+        primaryStage.show();
+    }
 
     public static void main(String[] args) throws IOException {
-        Automaton automate = new Automaton();
-        String value = "0",texte;
-        Scanner sc;
-        System.out.println("Pour sortir rentrer * ");
-        do {
-            System.out.print("add keyword : ");
-            sc = new Scanner(System.in);
-            value = sc.nextLine();
-            if (!value.equals("*"))
-                automate.addWord(value);
-        } while (!value.equals("*"));
-        automate.recherche(automate.readText());
+        launch(args);
     }
+
+
 }
