@@ -139,7 +139,7 @@ public class Automaton {
                         int firstIndex =  indexOfPositionLine-arrayOfValidWord.size();
                         System.out.println("LIGNE : " +indexOfLine);
                         System.out.println("POSITION :" + firstIndex + " to " + indexOfPositionLine  );
-                        arrayOfValidPos.add(new validPos(z, firstIndex+1, i+1));
+                        arrayOfValidPos.add(new validPos(indexOfLine , firstIndex+1, indexOfPosition+1));
                     }
                 }
             }
