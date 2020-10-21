@@ -1,4 +1,4 @@
-# Algorithme Aho-Corosick Java
+# Algorithme Aho-Corasick Java
 ### Devoir n°2 
 ### Reconnaissance de mots-clés  
 
